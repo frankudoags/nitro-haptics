@@ -1,0 +1,19 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": [
+    "nitrohaptics"
+  ],
+  "ios": {
+    "iosModuleName": "NitroHaptics"
+  },
+  "android": {
+    "androidNamespace": [
+      "nitrohaptics"
+    ],
+    "androidCxxLibName": "NitroHaptics"
+  },
+  "autolinking": {},
+  "ignorePaths": [
+    "**/node_modules"
+  ]
+}
