@@ -25,22 +25,12 @@ import com.margelo.nitro.core.HybridObject
 )
 abstract class HybridHapticsSpec: HybridObject() {
   // Properties
-  abstract var trigger: (style: HapticStyle) -> Unit
   
-  private var trigger_cxx: Func_void_HapticStyle
-    @Keep
-    @DoNotStrip
-    get() {
-      return Func_void_HapticStyle_java(trigger)
-    }
-    @Keep
-    @DoNotStrip
-    set(value) {
-      trigger = value
-    }
 
   // Methods
-  
+  @DoNotStrip
+  @Keep
+  abstract fun trigger(style: HapticStyle): Unit
 
   // Default implementation of `HybridObject.toString()`
   override fun toString(): String {

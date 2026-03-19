@@ -50,12 +50,11 @@ namespace margelo::nitro::nitrohaptics {
 
   public:
     // Properties
-    std::function<void(HapticStyle /* style */)> getTrigger() override;
-    void setTrigger(const std::function<void(HapticStyle /* style */)>& trigger) override;
+    
 
   public:
     // Methods
-    
+    void trigger(HapticStyle style) override;
 
   private:
     jni::global_ref<JHybridHapticsSpec::JavaPart> _javaPart;

@@ -16,7 +16,7 @@
 #include <NitroModules/HybridObjectRegistry.hpp>
 
 #include "JHybridHapticsSpec.hpp"
-#include "JFunc_void_HapticStyle.hpp"
+#include <NitroModules/DefaultConstructableObject.hpp>
 
 namespace margelo::nitro::nitrohaptics {
 
@@ -26,7 +26,14 @@ int initialize(JavaVM* vm) {
   });
 }
 
-
+struct JHybridHapticsSpecImpl: public jni::JavaClass<JHybridHapticsSpecImpl, JHybridHapticsSpec::JavaPart> {
+  static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrohaptics/HybridHaptics;";
+  static std::shared_ptr<JHybridHapticsSpec> create() {
+    static const auto constructorFn = javaClassStatic()->getConstructor<JHybridHapticsSpecImpl::javaobject()>();
+    jni::local_ref<JHybridHapticsSpec::JavaPart> javaPart = javaClassStatic()->newObject(constructorFn);
+    return javaPart->getJHybridHapticsSpec();
+  }
+};
 
 void registerAllNatives() {
   using namespace margelo::nitro;
@@ -34,10 +41,14 @@ void registerAllNatives() {
 
   // Register native JNI methods
   margelo::nitro::nitrohaptics::JHybridHapticsSpec::CxxPart::registerNatives();
-  margelo::nitro::nitrohaptics::JFunc_void_HapticStyle_cxx::registerNatives();
 
   // Register Nitro Hybrid Objects
-  
+  HybridObjectRegistry::registerHybridObjectConstructor(
+    "Haptics",
+    []() -> std::shared_ptr<HybridObject> {
+      return JHybridHapticsSpecImpl::create();
+    }
+  );
 }
 
 } // namespace margelo::nitro::nitrohaptics

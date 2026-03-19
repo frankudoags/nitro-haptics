@@ -17,7 +17,6 @@
 namespace margelo::nitro::nitrohaptics { enum class HapticStyle; }
 
 #include "HapticStyle.hpp"
-#include <functional>
 
 namespace margelo::nitro::nitrohaptics {
 
@@ -46,12 +45,11 @@ namespace margelo::nitro::nitrohaptics {
 
     public:
       // Properties
-      virtual std::function<void(HapticStyle /* style */)> getTrigger() = 0;
-      virtual void setTrigger(const std::function<void(HapticStyle /* style */)>& trigger) = 0;
+      
 
     public:
       // Methods
-      
+      virtual void trigger(HapticStyle style) = 0;
 
     protected:
       // Hybrid Setup

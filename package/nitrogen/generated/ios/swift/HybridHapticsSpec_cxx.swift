@@ -121,25 +121,17 @@ open class HybridHapticsSpec_cxx {
   }
 
   // Properties
-  public final var trigger: bridge.Func_void_HapticStyle {
-    @inline(__always)
-    get {
-      return { () -> bridge.Func_void_HapticStyle in
-        let __closureWrapper = Func_void_HapticStyle(self.__implementation.trigger)
-        return bridge.create_Func_void_HapticStyle(__closureWrapper.toUnsafe())
-      }()
-    }
-    @inline(__always)
-    set {
-      self.__implementation.trigger = { () -> (HapticStyle) -> Void in
-        let __wrappedFunction = bridge.wrap_Func_void_HapticStyle(newValue)
-        return { (__style: HapticStyle) -> Void in
-          __wrappedFunction.call(__style.rawValue)
-        }
-      }()
-    }
-  }
+  
 
   // Methods
-  
+  @inline(__always)
+  public final func trigger(style: Int32) -> bridge.Result_void_ {
+    do {
+      try self.__implementation.trigger(style: margelo.nitro.nitrohaptics.HapticStyle(rawValue: style)!)
+      return bridge.create_Result_void_()
+    } catch (let __error) {
+      let __exceptionPtr = __error.toCpp()
+      return bridge.create_Result_void_(__exceptionPtr)
+    }
+  }
 }

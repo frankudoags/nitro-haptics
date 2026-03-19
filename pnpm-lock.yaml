@@ -16,12 +16,25 @@ importers:
       expo-status-bar:
         specifier: ~55.0.4
         version: 55.0.4(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
+      nitro-haptics:
+        specifier: workspace:*
+        version: link:../package
       react:
         specifier: 19.2.0
         version: 19.2.0
       react-native:
         specifier: 0.83.2
         version: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0)
+      react-native-nitro-modules:
+        specifier: '*'
+        version: 0.35.2(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.0
+        version: 19.2.14
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
 
   package:
     devDependencies:
@@ -7134,6 +7147,11 @@ snapshots:
     dependencies:
       react: 19.2.0
       react-native: 0.83.0(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0)
+
+  react-native-nitro-modules@0.35.2(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0):
+    dependencies:
+      react: 19.2.0
+      react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0)
 
   react-native@0.83.0(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0):
     dependencies:

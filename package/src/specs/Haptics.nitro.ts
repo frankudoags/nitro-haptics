@@ -1,6 +1,6 @@
 import { type HybridObject } from 'react-native-nitro-modules'
 
-enum HapticStyle {
+export enum HapticStyle {
   Selection,
   ImpactLight,
   ImpactMedium,
@@ -14,5 +14,5 @@ export interface Haptics extends HybridObject<{
   ios: 'swift'
   android: 'kotlin'
 }> {
-  trigger: (style: HapticStyle) => void
+  trigger(style: HapticStyle): void
 }

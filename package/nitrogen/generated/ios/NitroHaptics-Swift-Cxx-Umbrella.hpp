@@ -16,7 +16,8 @@ namespace margelo::nitro::nitrohaptics { class HybridHapticsSpec; }
 // Include C++ defined types
 #include "HapticStyle.hpp"
 #include "HybridHapticsSpec.hpp"
-#include <functional>
+#include <NitroModules/Result.hpp>
+#include <exception>
 #include <memory>
 
 // C++ helpers for Swift

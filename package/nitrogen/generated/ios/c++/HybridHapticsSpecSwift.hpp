@@ -16,7 +16,6 @@ namespace NitroHaptics { class HybridHapticsSpec_cxx; }
 namespace margelo::nitro::nitrohaptics { enum class HapticStyle; }
 
 #include "HapticStyle.hpp"
-#include <functional>
 
 #include "NitroHaptics-Swift-Cxx-Umbrella.hpp"
 
@@ -64,17 +63,16 @@ namespace margelo::nitro::nitrohaptics {
 
   public:
     // Properties
-    inline std::function<void(HapticStyle /* style */)> getTrigger() noexcept override {
-      auto __result = _swiftPart.getTrigger();
-      return __result;
-    }
-    inline void setTrigger(const std::function<void(HapticStyle /* style */)>& trigger) noexcept override {
-      _swiftPart.setTrigger(trigger);
-    }
+    
 
   public:
     // Methods
-    
+    inline void trigger(HapticStyle style) override {
+      auto __result = _swiftPart.trigger(static_cast<int>(style));
+      if (__result.hasError()) [[unlikely]] {
+        std::rethrow_exception(__result.error());
+      }
+    }
 
   private:
     NitroHaptics::HybridHapticsSpec_cxx _swiftPart;

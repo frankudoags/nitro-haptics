@@ -11,9 +11,6 @@
 namespace margelo::nitro::nitrohaptics { enum class HapticStyle; }
 
 #include "HapticStyle.hpp"
-#include <functional>
-#include "JFunc_void_HapticStyle.hpp"
-#include <NitroModules/JNICallable.hpp>
 #include "JHapticStyle.hpp"
 
 namespace margelo::nitro::nitrohaptics {
@@ -46,25 +43,12 @@ namespace margelo::nitro::nitrohaptics {
   }
 
   // Properties
-  std::function<void(HapticStyle /* style */)> JHybridHapticsSpec::getTrigger() {
-    static const auto method = _javaPart->javaClassStatic()->getMethod<jni::local_ref<JFunc_void_HapticStyle::javaobject>()>("getTrigger_cxx");
-    auto __result = method(_javaPart);
-    return [&]() -> std::function<void(HapticStyle /* style */)> {
-      if (__result->isInstanceOf(JFunc_void_HapticStyle_cxx::javaClassStatic())) [[likely]] {
-        auto downcast = jni::static_ref_cast<JFunc_void_HapticStyle_cxx::javaobject>(__result);
-        return downcast->cthis()->getFunction();
-      } else {
-        auto __resultRef = jni::make_global(__result);
-        return JNICallable<JFunc_void_HapticStyle, void(HapticStyle)>(std::move(__resultRef));
-      }
-    }();
-  }
-  void JHybridHapticsSpec::setTrigger(const std::function<void(HapticStyle /* style */)>& trigger) {
-    static const auto method = _javaPart->javaClassStatic()->getMethod<void(jni::alias_ref<JFunc_void_HapticStyle::javaobject> /* trigger */)>("setTrigger_cxx");
-    method(_javaPart, JFunc_void_HapticStyle_cxx::fromCpp(trigger));
-  }
+  
 
   // Methods
-  
+  void JHybridHapticsSpec::trigger(HapticStyle style) {
+    static const auto method = _javaPart->javaClassStatic()->getMethod<void(jni::alias_ref<JHapticStyle> /* style */)>("trigger");
+    method(_javaPart, JHapticStyle::fromCpp(style));
+  }
 
 } // namespace margelo::nitro::nitrohaptics

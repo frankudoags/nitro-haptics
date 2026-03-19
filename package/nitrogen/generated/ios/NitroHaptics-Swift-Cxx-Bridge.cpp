@@ -14,14 +14,6 @@
 
 namespace margelo::nitro::nitrohaptics::bridge::swift {
 
-  // pragma MARK: std::function<void(HapticStyle /* style */)>
-  Func_void_HapticStyle create_Func_void_HapticStyle(void* NON_NULL swiftClosureWrapper) noexcept {
-    auto swiftClosure = NitroHaptics::Func_void_HapticStyle::fromUnsafe(swiftClosureWrapper);
-    return [swiftClosure = std::move(swiftClosure)](HapticStyle style) mutable -> void {
-      swiftClosure.call(static_cast<int>(style));
-    };
-  }
-  
   // pragma MARK: std::shared_ptr<HybridHapticsSpec>
   std::shared_ptr<HybridHapticsSpec> create_std__shared_ptr_HybridHapticsSpec_(void* NON_NULL swiftUnsafePointer) noexcept {
     NitroHaptics::HybridHapticsSpec_cxx swiftPart = NitroHaptics::HybridHapticsSpec_cxx::fromUnsafe(swiftUnsafePointer);

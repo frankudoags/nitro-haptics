@@ -10,10 +10,10 @@ import NitroModules
 /// See ``HybridHapticsSpec``
 public protocol HybridHapticsSpec_protocol: HybridObject {
   // Properties
-  var trigger: (_ style: HapticStyle) -> Void { get set }
+  
 
   // Methods
-  
+  func trigger(style: HapticStyle) throws -> Void
 }
 
 public extension HybridHapticsSpec_protocol {

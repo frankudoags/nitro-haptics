@@ -8,8 +8,6 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `HapticStyle` to properly resolve imports.
-namespace margelo::nitro::nitrohaptics { enum class HapticStyle; }
 // Forward declaration of `HybridHapticsSpec` to properly resolve imports.
 namespace margelo::nitro::nitrohaptics { class HybridHapticsSpec; }
 
@@ -18,9 +16,9 @@ namespace margelo::nitro::nitrohaptics { class HybridHapticsSpec; }
 namespace NitroHaptics { class HybridHapticsSpec_cxx; }
 
 // Include C++ defined types
-#include "HapticStyle.hpp"
 #include "HybridHapticsSpec.hpp"
-#include <functional>
+#include <NitroModules/Result.hpp>
+#include <exception>
 #include <memory>
 
 /**
@@ -29,28 +27,6 @@ namespace NitroHaptics { class HybridHapticsSpec_cxx; }
  */
 namespace margelo::nitro::nitrohaptics::bridge::swift {
 
-  // pragma MARK: std::function<void(HapticStyle /* style */)>
-  /**
-   * Specialized version of `std::function<void(HapticStyle)>`.
-   */
-  using Func_void_HapticStyle = std::function<void(HapticStyle /* style */)>;
-  /**
-   * Wrapper class for a `std::function<void(HapticStyle / * style * /)>`, this can be used from Swift.
-   */
-  class Func_void_HapticStyle_Wrapper final {
-  public:
-    explicit Func_void_HapticStyle_Wrapper(std::function<void(HapticStyle /* style */)>&& func): _function(std::make_unique<std::function<void(HapticStyle /* style */)>>(std::move(func))) {}
-    inline void call(int style) const noexcept {
-      _function->operator()(static_cast<HapticStyle>(style));
-    }
-  private:
-    std::unique_ptr<std::function<void(HapticStyle /* style */)>> _function;
-  } SWIFT_NONCOPYABLE;
-  Func_void_HapticStyle create_Func_void_HapticStyle(void* NON_NULL swiftClosureWrapper) noexcept;
-  inline Func_void_HapticStyle_Wrapper wrap_Func_void_HapticStyle(Func_void_HapticStyle value) noexcept {
-    return Func_void_HapticStyle_Wrapper(std::move(value));
-  }
-  
   // pragma MARK: std::shared_ptr<HybridHapticsSpec>
   /**
    * Specialized version of `std::shared_ptr<HybridHapticsSpec>`.
@@ -62,5 +38,14 @@ namespace margelo::nitro::nitrohaptics::bridge::swift {
   // pragma MARK: std::weak_ptr<HybridHapticsSpec>
   using std__weak_ptr_HybridHapticsSpec_ = std::weak_ptr<HybridHapticsSpec>;
   inline std__weak_ptr_HybridHapticsSpec_ weakify_std__shared_ptr_HybridHapticsSpec_(const std::shared_ptr<HybridHapticsSpec>& strong) noexcept { return strong; }
+  
+  // pragma MARK: Result<void>
+  using Result_void_ = Result<void>;
+  inline Result_void_ create_Result_void_() noexcept {
+    return Result<void>::withValue();
+  }
+  inline Result_void_ create_Result_void_(const std::exception_ptr& error) noexcept {
+    return Result<void>::withError(error);
+  }
 
 } // namespace margelo::nitro::nitrohaptics::bridge::swift
