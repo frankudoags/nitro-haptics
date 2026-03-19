@@ -36,6 +36,11 @@
     "typescript": "tsc",
     "specs": "tsc --noEmit false && nitrogen --logLevel=\"debug\""
   },
+  "expo": {
+    "plugins": [
+      "./plugin/index.js"
+    ]
+  },
   "keywords": [
     "react-native",
     "nitro"
@@ -52,6 +57,9 @@
   "homepage": "https://github.com/mrousavy/nitro#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "~55.0.7"
   },
   "devDependencies": {
     "@react-native/eslint-config": "0.83.0",

@@ -24,6 +24,9 @@
       },
       "package": "com.oysterai.example"
     },
+    "plugins": [
+      "nitro-haptics"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
