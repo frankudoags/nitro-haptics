@@ -1,14 +1,15 @@
 package com.margelo.nitro.nitrohaptics
 
+import android.Manifest
 import android.content.Context
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
+import androidx.annotation.RequiresPermission
 import com.margelo.nitro.NitroModules
-import com.margelo.nitro.nitrohaptics.HapticStyle
-import com.margelo.nitro.nitrohaptics.HybridHapticsSpec
 
 class HybridHaptics: HybridHapticsSpec() {
+    @RequiresPermission(Manifest.permission.VIBRATE)
     override fun trigger(style: HapticStyle) {
         val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
