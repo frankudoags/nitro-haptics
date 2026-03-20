@@ -8,27 +8,27 @@ class HybridHaptics: HybridHapticsSpec {
             let generator = UISelectionFeedbackGenerator()
             generator.prepare()
             generator.selectionChanged()
-        case .impactLight:
+        case .impactlight:
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.prepare()
             generator.impactOccurred()
-        case .impactMedium:
+        case .impactmedium:
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.prepare()
             generator.impactOccurred()
-        case .impactHeavy:
+        case .impactheavy:
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.prepare()
             generator.impactOccurred()  
-        case .notificationSuccess:
+        case .notificationsuccess:
             let generator = UINotificationFeedbackGenerator()
             generator.prepare()
             generator.notificationOccurred(.success)
-        case .notificationWarning:
+        case .notificationwarning:
             let generator = UINotificationFeedbackGenerator()
             generator.prepare()
             generator.notificationOccurred(.warning)
-        case .notificationError:
+        case .notificationerror:
             let generator = UINotificationFeedbackGenerator()
             generator.prepare()
             generator.notificationOccurred(.error)
